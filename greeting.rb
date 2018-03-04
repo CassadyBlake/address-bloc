@@ -1,13 +1,7 @@
 def greeting
+    greet = ARGV.slice!(0)
     
-    ARGV.each do |arg|
-        first_arg = ARGV[0]
-        
-        if arg != first_arg
-            puts "#{first_arg} #{arg}"
-        end
-        
-    end
+    ARGV.each { |name| puts "#{greet} #{name}" }
 end
 
 greeting
