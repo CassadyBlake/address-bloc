@@ -63,13 +63,18 @@ class MenuController
 
   def view_entry_n
     print "Type entry number to view: "
-    number = gets.to_i
-    index = (number - 1)
-    entry = address_book.entries[index]
+    number = gets.chomp.to_i - 1
+    entry = address_book.entries[number]
 
-    system "clear"
-    puts entry.to_s
-    entry_submenu(entry)
+    if number <= address_book.entries.count
+      puts entry
+      puts "Press enter to return to the main menu"
+      gets.chomp
+      system "clear"
+    else
+      puts "#{number} is invalid"
+      view_entry_n
+    end
   end
 
   def create_entry
